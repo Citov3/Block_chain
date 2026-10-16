@@ -14,19 +14,34 @@ class  Blockchain(object):
         
 #Create a new Block in the Blockchain
     def new_block(self, proof, previous_hash=None):
-        new_block ={
+        block ={
             'index': len(self.chain) + 1,
             'timestamp': time(),
             'transactions': self.current_transactions,
             'proof': proof,
             'previous_hash': previous_hash or self.hash(self.chain[-1])
         }
-    
 
+        self.current_transactions = [] #resets the hash of the current list of transactions
+
+        self.chain.append(block)
+        return block
     
         pass
 
-    def new_transaction(self):
+    def new_transaction(self, sender, recipient, amount):
+        self.current_transactions.append({
+            'sender': sender,
+            'recipient': recipient,
+            'amount': amount
+        })
+        return self.last_block['index'] + 1
+
+
+    @property
+    def last_block(self):
+        return self.chain[-1]
+    
         pass
 
     @staticmethod
