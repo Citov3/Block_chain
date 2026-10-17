@@ -27,7 +27,7 @@ class  Blockchain(object):
         self.chain.append(block)
         return block
     
-        pass
+        
 
     def new_transaction(self, sender, recipient, amount):
         self.current_transactions.append({
@@ -56,13 +56,3 @@ class  Blockchain(object):
 #adds a transaction to the list,
 # it returns the index of the block which the transaction will be added to—the next one to be mined.
 
-def new_transaction(self,sender, recipient, amount):
-
-    self.current_transactions.append({
-        'sender': sender,
-        'receipient': recipient,
-        'amount': amount
-
-    })
-
-    return self.last_block['index'] + 1
